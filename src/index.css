@@ -24,3 +24,6 @@ body{
 #admin-tasklist::-webkit-scrollbar{
   display:  none;
 }
+#task-Details::-webkit-scrollbar{
+  display: none;
+}

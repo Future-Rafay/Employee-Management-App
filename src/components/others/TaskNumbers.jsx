@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const EmployTaskNumbers = ({data}) => {
+const TaskNumbers = ({data}) => {
     return (
         <div className=" mt-10 flex justify-between gap-5 screen">
             <div className="py-6 px-9 w-[45%] bg-blue-400 rounded-xl ">
@@ -19,9 +19,9 @@ const EmployTaskNumbers = ({data}) => {
                 <h2 className="text-3xl font-semibold">{data.taskCount.failedTask}</h2>
                 <h3 className="text-xl font-medium">Failed Task</h3>
             </div>
-           
+            
         </div>
-    );  
-};
+    )
+}
 
-export default EmployTaskNumbers;
+export default TaskNumbers;

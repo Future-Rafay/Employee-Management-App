@@ -2,7 +2,7 @@ import React from "react";
 import Login from "./components/Auth/Login";
 import EmpolyeeDashboard from "./components/Dashboard/EmpolyeeDashboard";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
-import {  useState, useContext } from "react";
+import { useEffect , useState, useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
@@ -10,19 +10,21 @@ const App = () => {
   const [loggedInUserData, setLoggedInUserData] = useState(null);
   const authdata = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   if (authdata) {
-  //     const loggedInUser = localStorage.getItem("loggedInUser");
-  //     if (loggedInUser) {
-  //       setUser(loggedInUser.role);
-  //     }
-  //   }
-  // }, [authdata]);
+  useEffect(() => {
+   const loggedInUser = localStorage.getItem("loggedInUser");
+  if(loggedInUser){
+    const userData = JSON.parse(loggedInUser)
+    setUser(userData.role)
+    // setLoggedInUserData(userData.data)
+  }
+  },[])
 
   const handleLogin = (email, password) => {
+
     if (email == "admin@me.com" && password == "123") {
-      setUser("admin");
+      setUser('admin');
       localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+
     } else if (authdata) {
       const employee = authdata.employees.find(
         (e) => email == e.email && e.password == password

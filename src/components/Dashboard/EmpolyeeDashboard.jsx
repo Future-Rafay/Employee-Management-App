@@ -1,6 +1,6 @@
 import React from 'react'
-import EmployHeader from '../others/EmployHeader';
-import EmployTaskNumbers from '../others/EmployTaskNumbers';
+import Header from '../others/Header';
+import TaskNumbers from '../others/TaskNumbers';
 import TaskList from '../TaskList/TaskList';
 
 const EmpolyeeDashboard = ({data}) => {
@@ -8,8 +8,8 @@ const EmpolyeeDashboard = ({data}) => {
   
   return (
     <div className='p-10 bg-[#1C1C1C] h-screen'>
-        <EmployHeader data={data}/>
-        <EmployTaskNumbers data={data}/>
+        <Header data={data}/>
+        <TaskNumbers data={data}/>
         <TaskList data={data} />
     </div>
   )

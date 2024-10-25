@@ -1,15 +1,55 @@
-import React from 'react'
+import React from "react";
+import { useState } from "react";
 
 const CreateTask = () => {
+    const [createdNewTask, setcreatedNewTask] = useState({});
+
+    const [taskTitle, setTaskTitle] = useState("");
+    const [taskDescription, setTaskDescription] = useState("");
+    const [taskDate, setTaskDate] = useState("");
+    const [assignTo, setAssignTo] = useState("");
+    const [taskCategory, setTaskCategory] = useState("");
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        setcreatedNewTask({
+            taskTitle,
+            taskDescription,
+            taskDate,
+            taskCategory,
+            assignTo,
+            newTask: true,
+            activeTask: false,
+            completedTask: false,
+            failedTask: false,
+        });
+
+        console.log(setcreatedNewTask);
+        
+
+        // setTaskTitle("");
+        // setTaskDescription("");
+        // setTaskDate("");
+        // setTaskCategory("");
+        // setAssignTo("");
+    };
     return (
         <div>
-            <form className="flex flex-wrap w-full items-start justify-between bg-[#1C1C1C] py-8 mt-7 rounded-lg">
+            <form
+                onSubmit={(e) => {
+                    submitHandler(e);
+                }}
+                className="flex flex-wrap w-full items-start justify-between bg-[#1C1C1C] py-8 mt-7 rounded-lg"
+            >
                 <div className="px-5 py-0 w-1/2 bg--400">
                     <fieldset className="mt-4 px-2 ">
-                        <legend className="text-white mb-0.5 text-lg">
-                            Task Title
-                        </legend>
+                        <legend className="text-white mb-0.5 text-lg">Task Title</legend>
                         <input
+                            value={taskTitle}
+                            onChange={(e) => {
+                                setTaskTitle(e.target.value);
+                            }}
                             className="text-base bg-transparent px-2 py-1 rounded w-[60%] border-[1px]  border-gray-400 outline-none  "
                             type="text"
                             placeholder="Make a UI design"
@@ -18,26 +58,34 @@ const CreateTask = () => {
                     <fieldset className="mt-4 px-2 ">
                         <legend className="text-white mb-0.5 text-lg">Date</legend>
                         <input
+                            value={taskDate}
+                            onChange={(e) => {
+                                setTaskDate(e.target.value);
+                            }}
                             className="text-base bg-transparent px-2 py-1 rounded w-[60%] border-[1px] border-gray-400 outline-none placeholder: text-gray-400"
                             type="date"
                             placeholder="dd/mm/yyyy"
                         />
                     </fieldset>
                     <fieldset className="mt-4 px-2 ">
-                        <legend className="text-white mb-0.5 text-lg">
-                            Asign To
-                        </legend>
+                        <legend className="text-white mb-0.5 text-lg">Asign To</legend>
                         <input
+                            value={assignTo}
+                            onChange={(e) => {
+                                setAssignTo(e.target.value);
+                            }}
                             className="text-base bg-transparent px-2 py-1 rounded w-[60%] border-[1px] border-gray-400 outline-none "
                             type="text"
                             placeholder="Employe username"
                         />
                     </fieldset>
                     <fieldset className="mt-4 px-2 ">
-                        <legend className="text-white mb-0.5 text-lg">
-                            Category
-                        </legend>
+                        <legend className="text-white mb-0.5 text-lg">Category</legend>
                         <input
+                            value={taskCategory}
+                            onChange={(e) => {
+                                setTaskCategory(e.target.value);
+                            }}
                             className="text-base bg-transparent px-2 py-1 rounded w-[60%] border-[1px] border-gray-400 outline-none "
                             type="text"
                             placeholder="Design ,Development ,etc..."
@@ -48,6 +96,10 @@ const CreateTask = () => {
                     <fieldset className=" px-2 w-[80%]">
                         <legend className="text-white mb-0.5 text-lg">Description</legend>
                         <textarea
+                            value={taskDescription}
+                            onChange={(e) => {
+                                setTaskDescription(e.target.value);
+                            }}
                             className="w-full bg-transparent px-2 py-2 rounded border-[1px] border-gray-400 outline-none "
                             name=""
                             id=""
@@ -56,11 +108,13 @@ const CreateTask = () => {
                             placeholder="Detailed description of Task (Max 500 words)"
                         ></textarea>
                     </fieldset>
-                    <button className="w-[79%] text-lg rounded-md bg-emerald-500 hover:bg-emerald-600 py-3 mt-3 ml-2">Create Task</button>
+                    <button className="w-[79%] text-lg rounded-md bg-emerald-500 hover:bg-emerald-600 py-3 mt-3 ml-2">
+                        Create Task
+                    </button>
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default CreateTask
+export default CreateTask;

@@ -1,8 +1,8 @@
 import React from "react";
 
-const FailedTask = ({data}) => {
+const CompletedTask = ({data}) => {
     return (
-        <div className="h-full p-4 bg-red-700 w-[350px] rounded-xl relative ">
+        <div className="h-full p-4 bg-yellow-700 w-[350px] rounded-xl relative ">
             <div id="task-Details" className="flex flex-col overflow-x-auto h-[93%]">
                 <div className="flex justify-between items-center">
                     <h3 className="bg-red-500 px-3 text-sm font-medium py-1 rounded">
@@ -12,9 +12,9 @@ const FailedTask = ({data}) => {
                 </div>
                 <h2 className="mt-5 text-2xl font-semibold">{data.title}</h2>
                 <p className="text-sm mt-2 ">{data.description}</p>
-                <div className="absolute right-2.5 bottom-2">
-                    <button className="bg-red-500 w-28 text-sm font-medium py-1 rounded  hover:bg-red-700">
-                        Failed
+                <div className="absolute right-2 bottom-2">
+                    <button className="bg-green-500  w-28  text-sm font-medium py-1 rounded  hover:bg-green-700">
+                        Completed
                     </button>
                 </div>
             </div>
@@ -22,4 +22,4 @@ const FailedTask = ({data}) => {
     );
 };
 
-export default FailedTask;
+export default CompletedTask;
