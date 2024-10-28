@@ -16,7 +16,7 @@ const CreateTask = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    setcreatedNewTask({
+    const newTask = {
       taskTitle,
       taskDescription,
       taskDate,
@@ -25,30 +25,30 @@ const CreateTask = () => {
       activeTask: false,
       completedTask: false,
       failedTask: false,
-    });
-
-    const data = userData;
-
-    data.forEach((elem) => {
-      if (assignTo == elem.name) {
-        elem.tasks.push(createdNewTask);
-        elem.taskCount.newTask = elem.taskCount.newTask += 1;
-        console.log(elem.tasks);
+    };
+  
+    setcreatedNewTask(newTask);
+  
+    const updatedUserData = userData.map((elem) => {
+      if (assignTo === elem.name) {
+        elem.tasks.unshift(newTask);
+        elem.taskCount.newTask += 1;
+        elem.taskCount.totalTasks += 1
       }
       return elem;
     });
-    setUserData(data);
-  
+    
+    setUserData(updatedUserData);
 
+    localStorage.setItem("employees", JSON.stringify(updatedUserData));
+  
     setTaskTitle("");
     setTaskDescription("");
     setTaskDate("");
     setTaskCategory("");
     setAssignTo("");
-
-  
   };
-  return (
+return (  
     <div>
       <form
         onSubmit={(e) => {
