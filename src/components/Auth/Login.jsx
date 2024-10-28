@@ -1,69 +1,70 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Login = (props) => {
-  const [email, setEmail] = useState("");
+  const [selectedEmail, setSelectedEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  const employees = [
+    { email: "ali.khan@example.com", password: "123" },
+    { email: "ayesha.ahmed@example.com", password: "123" },
+    { email: "bilal.hussain@example.com", password: "123" },
+    { email: "fatima.riaz@example.com", password: "123" },
+    { email: "hamza.sheikh@example.com", password: "123" },
+  ];
+
+  const admin = { email: "admin@me.com", password: "123" };
+
+  const handleEmailChange = (e) => {
+    const email = e.target.value;
+    setSelectedEmail(email);
+    // Set password based on selected email
+    const selectedEmployee = employees.find(emp => emp.email === email);
+    setPassword(selectedEmployee ? selectedEmployee.password : (email === admin.email ? admin.password : ""));
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    props.handleLogin(email, password);
-    setEmail("");
+    props.handleLogin(selectedEmail, password);
+    setSelectedEmail("");
     setPassword("");
   };
 
   return (
-    <div className="flex flex-col h-screen w-screen border-8 border-emerald-400 overflow-hidden">
-      {/* <button className="px-3 py-1 bg-emerald-400 text-white h-10 w-auto border-none outline-none text-xl font-semibold">See Emails And Passwords</button> */}
-
-      <div className="flex h-screen w-screen items-center justify-evenly bg-[#1C1C1C]">
-        <div className="p-20 border-2 border-emerald-600 rounded-xl">
-          <ol>
-            <h1 className="text-xl font-semibold ">Employees Emails And Passwords</h1>
-            <li className="text-lg leading-7">ali.khan@example.com , 123</li>
-            <li className="text-lg leading-7">ayesha.ahmed@example.com , 123</li>
-            <li className="text-lg leading-7">bilal.hussain@example.com , 123</li>
-            <li className="text-lg leading-7">fatima.riaz@example.com , 123</li>
-            <li className="text-lg leading-7">hamza.sheikh@example.com , 123</li>
-          </ol>
-        </div>
-        <div className="border-2 border-emerald-600 rounded-xl">
-          <form
-            onSubmit={(e) => {
-              submitHandler(e);
-            }}
-            className="flex flex-col items-center justify-center p-20"
-          >
-            <input
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+    <div className="flex flex-col h-screen w-screen bg-gray-800 text-white">
+      <div className="flex items-center justify-center p-10">
+        <h1 className="text-2xl font-bold">Login</h1>
+      </div>
+      <div className="flex h-full items-center justify-center">
+        <div className="border-2 border-emerald-600 rounded-xl bg-gray-900 p-10">
+          <form onSubmit={submitHandler} className="flex flex-col items-center">
+            <select
+              value={selectedEmail}
+              onChange={handleEmailChange}
               required
-              className="border-2 border-emerald-600 px-5 py-3 rounded-full text-xl text-white outline-none bg-transparent  placeholder:text-gray-300"
-              type="email"
-              placeholder="Enter your Email"
-            />
+              className="border-2 border-emerald-600 px-5 py-3 rounded-full text-lg bg-transparent placeholder:text-gray-300 mb-4"
+            >
+              <option className="bg-gray-900" value="" disabled>Select Email</option>
+              {employees.map((emp) => (
+                <option className="bg-gray-900" key={emp.email} value={emp.email}>
+                  {emp.email}
+                </option>
+              ))}
+              <option className="bg-gray-900" value={admin.email}>{admin.email}</option>
+            </select>
+
             <input
               value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              onChange={(e) => setPassword(e.target.value)}
               required
-              className="border-2 border-emerald-600 px-5 py-3 mt-3 rounded-full text-xl text-white outline-none bg-transparent placeholder:text-gray-300"
+              className="border-2 border-emerald-600 px-5 py-3 rounded-full text-lg bg-transparent placeholder:text-gray-300"
               type="password"
               placeholder="Enter Password"
             />
-            <button className=" bg-emerald-600 px-8 w-full py-2 mt-7 rounded-full font-semibold text-lg text-white outline-none hover:bg-emerald-600 ">
+
+            <button className="bg-emerald-600 px-8 py-2 mt-7 rounded-full font-semibold text-lg hover:bg-emerald-500">
               Log in
             </button>
           </form>
-        </div>
-        <div className="p-20 border-2 border-emerald-600 rounded-xl">
-          <ol>
-            <h1 className="text-xl font-semibold">Admin Email And Password</h1>
-            <li className="text-lg leading-7">admin@me.com , 123</li>
-          </ol>
         </div>
       </div>
     </div>
@@ -71,3 +72,4 @@ const Login = (props) => {
 };
 
 export default Login;
+
