@@ -6,11 +6,12 @@ import FailedTask from "./FailedTask";
 import ActiveTask from "./ActiveTask";
 
 const TaskList = ({ data }) => {
-
+  
   return (
+    <div id="tasklist" className="h-[75%] overflow-auto mt-4 ">
     <div
       id="tasklist"
-      className="flex items-center overflow-x-auto justify-start gap-4 flex-nowrap h-[55%] py-10 mt-10 w-full"
+      className="flex items-center overflow-visible justify-center gap-4 flex-wrap h-[450px] py-10 mt-10 w-full"
     >
       {data.tasks.map((elem,idx) => {
         if (elem.newTask) {
@@ -26,6 +27,7 @@ const TaskList = ({ data }) => {
           return <FailedTask key={idx} data={elem} />;
         }
       })}
+    </div>
     </div>
   );
 };
