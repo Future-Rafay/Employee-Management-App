@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 const AllTask = () => {
-  const AuthData = useContext(AuthContext);
+  const [userData, setUserData] = useContext(AuthContext);
 
   return (
     <div
@@ -18,7 +18,9 @@ const AllTask = () => {
           <h2 className="text-xl font-semibold w-1/5 text-center">
             Employee Name
           </h2>
-          <h2 className="text-xl font-semibold w-1/5 text-center">New Tasks</h2>
+          <h2 className="text-xl font-semibold w-1/5 text-center">
+            New Tasks
+          </h2>
           <h2 className="text-xl font-semibold w-1/5 text-center">
             Active Tasks
           </h2>
@@ -30,9 +32,12 @@ const AllTask = () => {
           </h2>
         </div>
 
-        {AuthData.employees.map((elem,idx) => {
+        {userData.map((elem, idx) => {
           return (
-            <div key={idx} className="flex justify-evenly items-center bg-emerald-400 mb-1 p-3  ">
+            <div
+              key={idx}
+              className="flex justify-evenly items-center bg-emerald-400 mb-1 p-3  "
+            >
               <h2 className="text-lg font-medium w-1/5 text-center underline  ">
                 {elem.name}
               </h2>
@@ -51,7 +56,7 @@ const AllTask = () => {
             </div>
           );
         })}
-        </div>
+      </div>
     </div>
   );
 };

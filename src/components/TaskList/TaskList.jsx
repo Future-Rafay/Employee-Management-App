@@ -6,8 +6,6 @@ import FailedTask from "./FailedTask";
 import ActiveTask from "./ActiveTask";
 
 const TaskList = ({ data }) => {
-  // console.log(data);
-  // console.log(data.taskCount);
 
   return (
     <div
