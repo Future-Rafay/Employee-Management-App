@@ -13,7 +13,7 @@ const FailedTask = ({data}) => {
                 <h2 className="mt-5 text-2xl font-semibold">{data.title}</h2>
                 <p className="text-sm mt-2 ">{data.description}</p>
                 <div className="absolute right-2.5 bottom-2">
-                    <button className="bg-red-500 w-28 text-sm font-medium py-1 rounded  hover:bg-red-700">
+                    <button className="bg-red-500 w-28 text-sm font-medium py-1 rounded  hover:bg-red-800">
                         Failed
                     </button>
                 </div>
@@ -23,3 +23,5 @@ const FailedTask = ({data}) => {
 };
 
 export default FailedTask;
+
+

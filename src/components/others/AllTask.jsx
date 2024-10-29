@@ -36,7 +36,7 @@ const AllTask = () => {
           return (
             <div
               key={idx}
-              className="flex justify-evenly items-center bg-emerald-400 mb-1 p-3  "
+              className="flex justify-evenly items-center border-2 border-emerald-400 mb-1 p-3  "
             >
               <h2 className="text-lg font-medium w-1/5 text-center underline  ">
                 {elem.name}

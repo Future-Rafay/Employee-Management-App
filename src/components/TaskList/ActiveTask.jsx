@@ -2,13 +2,13 @@ import React from "react";
 
 const ActiveTask = ({ data }) => {
     return (
-        <div className="h-full p-4 bg-indigo-400 w-[350px] rounded-xl relative ">
+        <div className="h-full p-4 w-[350px] rounded-xl relative bg-yellow-500  ">
             <div
                 id="task-Details"
-                className="flex flex-col flex-nowrap overflow-x-auto h-[93%]"
+                className="flex flex-col flex-nowrap overflow-x-auto h-[93%] "
             >
                 <div className="flex justify-between items-center">
-                    <h3 className="bg-gray-500 px-3 text-sm font-medium py-1 rounded">
+                    <h3 className="bg-pink-500 px-3 text-sm font-medium py-1 rounded">
                         {data.category}
                     </h3>
                     <h4 className="font-semibold text-sm">{data.taskDate}</h4>
@@ -29,3 +29,5 @@ const ActiveTask = ({ data }) => {
 };
 
 export default ActiveTask;
+
+
