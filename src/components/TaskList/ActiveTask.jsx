@@ -1,6 +1,6 @@
 import React from "react";
 
-const ActiveTask = ({ data }) => {
+const ActiveTask = ({ data, onComplete, onFail }) => {
     return (
         <div className="flex-shrink-0 h-full p-4 w-[350px] rounded-xl relative bg-yellow-500  ">
             <div
@@ -16,10 +16,16 @@ const ActiveTask = ({ data }) => {
                 <h2 className="mt-5 text-2xl font-semibold">{data.title}</h2>
                 <p className="text-sm mt-2 ">{data.description}</p>
                 <div className="absolute right-5 bottom-2">
-                    <button className="bg-green-500 px-3 text-sm font-medium py-1 rounded ml-2 hover:bg-green-700">
+                    <button
+                        className="bg-green-500 px-3 text-sm font-medium py-1 rounded ml-2 hover:bg-green-700"
+                        onClick={onComplete}
+                    >
                         Mark As Completed
                     </button>
-                    <button className="bg-red-500 px-3 text-sm font-medium py-1 rounded ml-1 hover:bg-red-700">
+                    <button
+                        className="bg-red-500 px-3 text-sm font-medium py-1 rounded ml-1 hover:bg-red-700"
+                        onClick={onFail}
+                    >
                         Mark As Failed
                     </button>
                 </div>
@@ -29,5 +35,3 @@ const ActiveTask = ({ data }) => {
 };
 
 export default ActiveTask;
-
-

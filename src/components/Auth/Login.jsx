@@ -49,7 +49,7 @@ const Login = (props) => {
                   {emp.email}
                 </option>
               ))}
-              <option className="bg-gray-900" value={admin.email}>{admin.email}</option>
+              <option className="bg-green-300 text-black" value={admin.email}>{admin.email}</option>
             </select>
 
             <input
