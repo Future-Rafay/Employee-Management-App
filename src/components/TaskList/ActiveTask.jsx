@@ -2,7 +2,7 @@ import React from "react";
 
 const ActiveTask = ({ data }) => {
     return (
-        <div className="h-full p-4 w-[350px] rounded-xl relative bg-yellow-500  ">
+        <div className="flex-shrink-0 h-full p-4 w-[350px] rounded-xl relative bg-yellow-500  ">
             <div
                 id="task-Details"
                 className="flex flex-col flex-nowrap overflow-x-auto h-[93%] "
