@@ -7,7 +7,7 @@ const EmpolyeeDashboard = (props) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const employeeData = JSON.parse(localStorage.getItem("eemployees"));
+    const employeeData = JSON.parse(localStorage.getItem("employees"));
     // if(employeeData === null ){
     //   setData(JSON.parse(localStorage.getItem("employees")));
     // }else{
