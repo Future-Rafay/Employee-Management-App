@@ -8,11 +8,6 @@ const EmpolyeeDashboard = (props) => {
 
   useEffect(() => {
     const employeeData = JSON.parse(localStorage.getItem("employees"));
-    // if(employeeData === null ){
-    //   setData(JSON.parse(localStorage.getItem("employees")));
-    // }else{
-    //   setData(employeeData)
-    // }
     setData(employeeData);
   }, []);
 
